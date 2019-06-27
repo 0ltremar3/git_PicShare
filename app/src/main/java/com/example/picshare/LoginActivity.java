@@ -1,5 +1,6 @@
 package com.example.picshare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import table.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox cb_rememberPwd;
     private Button bt_login;
     private TextView tvSignUp;
+    public BmobUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BmobUser userlogin=new BmobUser();
+                final BmobUser userlogin=new BmobUser();
                 userlogin.setUsername(et_username.getText().toString());
                 userlogin.setPassword(et_password.getText().toString());
                 userlogin.login(new SaveListener<BmobUser>() {
@@ -60,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this,
                                     bmobUser.getUsername()+"登录成功",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent();
-                            intent.setClass(LoginActivity.this,MainActivity.class);
+                            intent.setClass(LoginActivity.this, GuideActivity.class);
                             startActivity(intent);
 
                         }else {
@@ -73,5 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 
