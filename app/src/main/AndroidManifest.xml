@@ -32,18 +32,20 @@
             android:name=".LoginActivity"
             android:label="UserLogin"
             android:theme="@style/AppTheme">
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
         </activity>
         <activity android:name=".EmitActivity">
         </activity>
         <activity
             android:name=".RegisterActity"
             android:label="UserRegister" />
+        <activity android:name=".ShowImageActivity"
+            android:label="checkPic"/>
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.picshare.BmobContentProvider">

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="10dp"
+        app:cardBackgroundColor="#f5f5f5">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_userbar"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp">
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:src="@drawable/ic_redeem_black_24dp"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_head"
+                android:layout_centerInParent="true"
+                android:text="昵称" />
+
+
+            <ImageView
+                android:id="@+id/iv_cal"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toLeftOf="@id/tv_time"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_date_range_black_24dp"/>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="时间" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dash_line"
+            android:layerType="software"
+            android:layout_below="@id/iv_userbar"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/divider1"
+            android:layout_marginTop="5dp"
+            android:scaleType="fitCenter"
+          />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dash_line"
+            android:layerType="software"
+            android:layout_below="@id/iv_picture"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider2"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp">
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_favorite_black_24dp" />
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_like"
+                android:text="0"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <ImageView
+                android:onClick="onclick"
+                android:id="@+id/iv_share"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_share_black_24dp" />
+
+            <ImageView
+                android:id="@+id/iv_save"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_toLeftOf="@id/iv_share"
+                android:src="@drawable/ic_file_download_black_24dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:id="@+id/blank"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layerType="software"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        />
+
+</LinearLayout>

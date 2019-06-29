@@ -1,17 +1,12 @@
 package com.example.picshare;
 
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,18 +27,19 @@ import com.zhihu.matisse.internal.entity.Item;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import io.reactivex.functions.Consumer;
-import module.Glide4Engine;
+import method.Glide4Engine;
 import table.PicInfo;
 import table.User;
 
@@ -61,7 +57,7 @@ public class EmitActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emit);
 
-        Bmob.initialize(this, "b1e48c3f44fbbee30ed2b36ddeb15dbe");
+//        Bmob.initialize(this, "b1e48c3f44fbbee30ed2b36ddeb15dbe");
 
         findViewById(R.id.iv_choosePic).setOnClickListener(this);
         findViewById(R.id.bt_upload).setOnClickListener(this);
@@ -123,7 +119,6 @@ public class EmitActivity extends AppCompatActivity
             {
                 Glide.with(this).load(_Uri).into(mView);//显示选择的图片
                 System.out.println(_Uri.getPath());
-
                 mpicPath = getRealPathFromURI(EmitActivity.this,_Uri);
 
             }
@@ -204,8 +199,9 @@ public class EmitActivity extends AppCompatActivity
                             "上传文件成功:" + bmobFile.getFileUrl(),
                             Toast.LENGTH_SHORT).show();
                     PicInfo picInfo = new PicInfo();
-                    picInfo.setPath(mpicPath);
                     picInfo.setPic(bmobFile);
+                    picInfo.setPath(mpicPath);
+                    picInfo.setPicUrl(bmobFile.getFileUrl());
                     picInfo.setOwner(BmobUser.getCurrentUser(User.class).getUsername());
                     picInfo.save(new SaveListener<String>() {
                         @Override
