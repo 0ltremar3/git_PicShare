@@ -83,9 +83,15 @@ public class GuideActivity extends AppCompatActivity {
 //                    mTextMessage.setText(R.string.title_user);
                     if(lastfragment != 1)
                     {
-                        switchFragment(lastfragment,1);
-                        lastfragment = 1;
-
+                        if (BmobUser.isLogin()){
+                            switchFragment(lastfragment,1);
+                            lastfragment = 1;
+                        }else {
+                            Intent intent = new Intent(
+                                    GuideActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                     return true;
             }

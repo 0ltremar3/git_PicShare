@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -58,6 +59,8 @@ public class EmitActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emit);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        Bmob.initialize(this, "b1e48c3f44fbbee30ed2b36ddeb15dbe");
 
@@ -214,6 +217,13 @@ public class EmitActivity extends AppCompatActivity
                 mprogress.setProgress(value);
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

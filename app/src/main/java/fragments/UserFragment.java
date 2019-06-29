@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.picshare.ChangePwdActivty;
+import com.example.picshare.LoginActivity;
 import com.example.picshare.R;
 
 import java.util.List;
@@ -53,13 +55,13 @@ public class UserFragment extends Fragment {
         iv_avater = getActivity().findViewById(R.id.iv_head);
         bt_change = getActivity().findViewById(R.id.bt_change);
         tv_id = getActivity().findViewById(R.id.tv_nickName);
+        bt_exit = getActivity().findViewById(R.id.bt_exit);
 
-        BmobUser bmobUser = BmobUser.getCurrentUser(User.class);
+        final BmobUser bmobUser = BmobUser.getCurrentUser(User.class);
         String username = (String) BmobUser.getObjectByKey("username");
-        String userpwd = (String) BmobUser.getObjectByKey("password");
-
-        Toast.makeText(getActivity(),
-                username,Toast.LENGTH_SHORT).show();
+//        String userpwd = (String) BmobUser.getObjectByKey("password");
+//        Toast.makeText(getActivity(),
+//                username,Toast.LENGTH_SHORT).show();
 
         tv_id.setText(username);
 
@@ -70,7 +72,24 @@ public class UserFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        bt_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BmobUser.logOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == android.R.id.home) {
+//            getActivity().finish();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
 
 }

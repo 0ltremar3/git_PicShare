@@ -40,8 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Bmob.initialize(this, "b1e48c3f44fbbee30ed2b36ddeb15dbe");
-
 //        getUser();
+        if (BmobUser.isLogin()){
+            Intent intent = new Intent(LoginActivity.this,
+                    GuideActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         tvSignUp = findViewById(R.id.tv_signup);
         et_username = findViewById(R.id.et_Account);
@@ -102,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                         User user = BmobUser.getCurrentUser(User.class);
                         String username = (String) BmobUser.getObjectByKey("username");
                         String userpwd = (String) BmobUser.getObjectByKey("password");
-
+//                        restoreInfo(username,userpwd);
                     }
                     Intent intent = new Intent();
                     intent.setClass(LoginActivity.this, GuideActivity.class);
@@ -115,6 +120,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void restoreInfo(String username,String userpwd){
+        et_username.setText(username);
+        et_password.setText(userpwd);
+        cb_rememberPwd.setChecked(false);
     }
 
 //    public void getUserCache(){
