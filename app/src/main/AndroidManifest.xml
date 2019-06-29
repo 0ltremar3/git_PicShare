@@ -46,6 +46,8 @@
             android:label="UserRegister" />
         <activity android:name=".ShowImageActivity"
             android:label="checkPic"/>
+        <activity android:name=".ChangePwdActivty"
+            android:label="changePassword"/>
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.picshare.BmobContentProvider">

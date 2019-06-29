@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.picshare.ChangePwdActivty;
 import com.example.picshare.R;
 
 import java.util.List;
@@ -29,8 +31,9 @@ import table.PicInfo;
 
 public class UserFragment extends Fragment {
     private ImageView iv_avater;
-    private TextView textView;
-    private Button button;
+    private Button bt_history;
+    private Button bt_change;
+    private Button bt_exit;
 
     @Nullable
     @Override
@@ -43,31 +46,18 @@ public class UserFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        textView = getActivity().findViewById(R.id.tv_user);
-        button = getActivity().findViewById(R.id.bt_user);
-        button.setText("下载");
-        iv_avater = getActivity().findViewById(R.id.iv_avater);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                BmobQuery<PicInfo> picInfoBmobQuery = new BmobQuery<>();
-//                picInfoBmobQuery.findObjects(new FindListener<PicInfo>() {
-//                    @Override
-//                    public void done(List<PicInfo> picInfoList, BmobException e) {
-//                        if (e == null){
-//                            Glide.with(iv_avater.getContext()).
-//                                    load(picInfoList.get(0).getPicUrl()).into(iv_avater);
-////                            downloadPic(picInfo);
-//                        }else {
-//                            Log.e("找不到文件","原因：" + e);
-//                        }
-//                    }
-//                });
 
-//
-                Toast.makeText(getActivity(),"userPage",Toast.LENGTH_SHORT).show();
+        iv_avater = getActivity().findViewById(R.id.iv_head);
+        bt_change = getActivity().findViewById(R.id.bt_change);
+
+        bt_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangePwdActivty.class);
+                startActivity(intent);
             }
         });
+
     }
 
 

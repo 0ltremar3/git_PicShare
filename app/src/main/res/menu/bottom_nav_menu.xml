@@ -6,10 +6,11 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-    <!--android:title="@string/title_emit"-->
+
     <item
         android:id="@+id/navigation_emit"
-        android:icon="@drawable/ic_add_circle_black_32dp"
+        android:icon="@drawable/ic_image_black_24dp"
+        android:title="@string/title_emit"
         />
 
     <item

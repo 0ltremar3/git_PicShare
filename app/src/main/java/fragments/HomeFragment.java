@@ -2,6 +2,7 @@ package fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
@@ -50,14 +52,13 @@ public class HomeFragment extends Fragment {
     private HashMap mHashmap;
     private List<Map<String, ?>> mapList = new ArrayList<Map<String, ?>>();
     private SimpleAdapter simpleAdapter;
-//    private boolean reflash = false;
-//    private String uri[];
+//    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         return view;
     }
 
@@ -76,7 +77,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onRefresh() {
                 // start refresh
-
                 getContent();
             }
         });
@@ -85,72 +85,35 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void getContent(){
+    public void getContent() {
 //        Toast.makeText(getActivity(),"homePage",Toast.LENGTH_SHORT).show();
         //只返回PicInfo表的pic这列的值
         BmobQuery<PicInfo> bmobQuery = new BmobQuery<PicInfo>();
         bmobQuery.order("-createdAt");
 //        bmobQuery.addQueryKeys("owner");
         bmobQuery.findObjects(new FindListener<PicInfo>() {
-                    @Override
-                    public void done(final List<PicInfo> list, BmobException e) {
-                        if (e == null){
-                            //sucess
-                            Toast.makeText(getActivity(),
-                                    "加载成功：共" + list.size() + "条动态。",
-                                    Toast.LENGTH_SHORT).show();
+            @Override
+            public void done(final List<PicInfo> list, BmobException e) {
+                if (e == null) {
+                    //sucess
+                    Toast.makeText(getActivity(),
+                            "加载成功：共" + list.size() + "条动态。",
+                            Toast.LENGTH_SHORT).show();
 
-                            final PicAdapter picAdapter = new PicAdapter(getActivity(),list);
-                            lvPics.setAdapter(picAdapter);
-                            picAdapter.setOnItemPicClickListener(new PicAdapter.onItemPicListener() {
-                                @Override
-                                public void onPicClick(int i) {
-//                                    Intent intent = getActivity().getIntent();
-//                                    String imgPath = intent.getStringExtra("imagePath");
-//
-//                                    View imgEntryView = View.inflate(getActivity(),R.layout.dialog_photo_entry,null);
-//                                    ImageView imageView = imgEntryView.findViewById(R.id.iv_dialog);
-//
-//                                    Dialog dialog = new Dialog(getActivity());
-//
-//                                    Glide.with(getActivity())
-//                                            .load(imgPath).placeholder(R.drawable.bitmap)//加载未完成时显示占位图
-//                                            .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                                            .into(imageView);//显示的位置
-//                                    dialog.setContentView(imageView);
-//                                    dialog.show();
-
-                                }
-                            });
+                    final PicAdapter picAdapter = new PicAdapter(getActivity(), list);
+                    lvPics.setAdapter(picAdapter);
 
 //                          刷新完成
-                                pullRefreshLayout.setRefreshing(false);
+                    pullRefreshLayout.setRefreshing(false);
 
-                }else {
+                } else {
                     //failed
                     Toast.makeText(getActivity(),
-                            "加载失败",Toast.LENGTH_SHORT).show();
+                            "加载失败", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
 
-
-    //下载图片
-    private void downloadPic(PicInfo picInfo) {
-        BmobFile pic = picInfo.getPic();
-        pic.download(new DownloadFileListener() {
-            @Override
-            public void done(String s, BmobException e) {
-
-            }
-
-            @Override
-            public void onProgress(Integer integer, long l) {
-                //设置进度条并显示
-            }
-        });
-
-    }
 }
