@@ -111,16 +111,16 @@
         android:layout_below="@id/lanmu3"
         android:layout_marginTop="16dp">
 
-        <CheckBox
-            android:id="@+id/cb_remember_pwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="记住密码"
-            android:textColor="@color/redd"
-            android:layout_marginLeft="12dp"
-            android:layout_marginBottom="4dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"/>
+        <!--<CheckBox-->
+            <!--android:id="@+id/cb_remember_pwd"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="记住密码"-->
+            <!--android:textColor="@color/redd"-->
+            <!--android:layout_marginLeft="12dp"-->
+            <!--android:layout_marginBottom="4dp"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_alignParentBottom="true"/>-->
 
         <TextView
             android:id="@+id/tv_signup"

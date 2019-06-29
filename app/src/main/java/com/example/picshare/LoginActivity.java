@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         tvSignUp = findViewById(R.id.tv_signup);
         et_username = findViewById(R.id.et_Account);
         et_password = findViewById(R.id.et_pwd);
-        cb_rememberPwd = findViewById(R.id.cb_remember_pwd);
+//        cb_rememberPwd = findViewById(R.id.cb_remember_pwd);
         bt_login = findViewById(R.id.bt_login);
         ivPwdSwitch = findViewById(R.id.iv_pwd_switch);
 
@@ -103,12 +103,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,
                             bmobUser.getUsername() + "登录成功", Toast.LENGTH_SHORT).show();
 //                    getUserCache();
-                    if (cb_rememberPwd.isChecked()){
-                        User user = BmobUser.getCurrentUser(User.class);
-                        String username = (String) BmobUser.getObjectByKey("username");
-                        String userpwd = (String) BmobUser.getObjectByKey("password");
-//                        restoreInfo(username,userpwd);
-                    }
+//                    if (cb_rememberPwd.isChecked()){
+//                        User user = BmobUser.getCurrentUser(User.class);
+//                        String username = (String) BmobUser.getObjectByKey("username");
+//                        String userpwd = (String) BmobUser.getObjectByKey("password");
+////                        restoreInfo(username,userpwd);
+//                    }
                     Intent intent = new Intent();
                     intent.setClass(LoginActivity.this, GuideActivity.class);
                     startActivity(intent);
