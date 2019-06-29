@@ -9,7 +9,15 @@
     android:background="#F5F5F5"
     >
 
-    <RelativeLayout
+    <com.scwang.wave.MultiWaveHeader
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        app:mwhStartColor="@color/colorPrimary"
+        app:mwhCloseColor="@color/mintcream">
+    </com.scwang.wave.MultiWaveHeader>
+
+    <LinearLayout
         android:id="@+id/lanmu1"
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -23,7 +31,7 @@
             android:layout_marginTop="0dp"
             android:src="@mipmap/ic_launcher_round" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/lanmu2"

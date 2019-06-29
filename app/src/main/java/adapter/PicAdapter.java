@@ -2,6 +2,8 @@ package adapter;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.net.Uri;
 import android.widget.BaseAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -62,19 +64,37 @@ public class PicAdapter extends BaseAdapter {
             //获取id
             viewHolder.mName = mLinearLayout.findViewById(R.id.tv_name);
             viewHolder.mPicture = mLinearLayout.findViewById(R.id.iv_picture);
+            viewHolder.mlike = mLinearLayout.findViewById(R.id.iv_like);
+            viewHolder.mShare = mLinearLayout.findViewById(R.id.iv_share);
+            viewHolder.mTime = mLinearLayout.findViewById(R.id.tv_time);
             //设置数据
             viewHolder.mName.setText(mList.get(i).getOwner());
-            //传递图片url
+            viewHolder.mTime.setText(mList.get(i).getCreatedAt());
+            //子控件点击事件
             viewHolder.mPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {//传递图片地址
                     //在HomeFragment中的setItemPic...方法里重写这个函数,实现图片点击的逻辑
-                    mOnItemPicListener.onPicClick(i);
+//                    mOnItemPicListener.onPicClick(i);
                     Intent intent = new Intent(mContext, ShowImageActivity.class);
                     intent.putExtra("imagePath",mList.get(i).getPicUrl());
                     intent.putExtra("picFile",mList.get(i).getObjectId());
                     mContext.startActivity(intent);
 
+                }
+            });
+            viewHolder.mShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent intent = new Intent(mContext, HomeFragment.class);
+//                    intent.putExtra("imagePath",mList.get(i).getPicUrl());
+//                    mOnItemSharePicListener.onShareClick(i);
+                    Intent intentShare = new Intent();
+                    intentShare.setAction(Intent.ACTION_SEND_MULTIPLE);
+                    intentShare.putExtra(Intent.EXTRA_STREAM, Uri.parse(mList.get(i).getPicUrl()));
+                    intentShare.setType("image/*");
+                    //打开分享
+                    mContext.startActivity(Intent.createChooser(intentShare, "分享到..."));
                 }
             });
             //使用glide加载图片
@@ -91,18 +111,36 @@ public class PicAdapter extends BaseAdapter {
             //获取id
             viewHolder.mName = mLinearLayout.findViewById(R.id.tv_name);
             viewHolder.mPicture = mLinearLayout.findViewById(R.id.iv_picture);
+            viewHolder.mlike = mLinearLayout.findViewById(R.id.iv_like);
+            viewHolder.mShare = mLinearLayout.findViewById(R.id.iv_share);
+            viewHolder.mTime = mLinearLayout.findViewById(R.id.tv_time);
             //设置数据
             viewHolder.mName.setText(mList.get(i).getOwner());
+            viewHolder.mTime.setText(mList.get(i).getCreatedAt());
             viewHolder.mPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //在HomeFragment中的setItemPic...方法里重写这个函数,实现图片点击的逻辑
-                    mOnItemPicListener.onPicClick(i);
+//                    mOnItemPicListener.onPicClick(i);
                     Intent intent = new Intent(mContext,ShowImageActivity.class);
                     intent.putExtra("imagePath",mList.get(i).getPicUrl());
                     intent.putExtra("picFile",mList.get(i).getObjectId());
                     mContext.startActivity(intent);
 
+                }
+            });
+            viewHolder.mShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent intent = new Intent(mContext, HomeFragment.class);
+//                    intent.putExtra("imagePath",mList.get(i).getPicUrl());
+//                    mOnItemSharePicListener.onShareClick(i);
+                    Intent intentShare = new Intent();
+                    intentShare.setAction(Intent.ACTION_SEND_MULTIPLE);
+                    intentShare.putExtra(Intent.EXTRA_STREAM,Uri.parse(mList.get(i).getPicUrl()));
+                    intentShare.setType("image/*");
+                    //打开分享
+                    mContext.startActivity(Intent.createChooser(intentShare, "分享到..."));
                 }
             });
 
@@ -129,6 +167,16 @@ public class PicAdapter extends BaseAdapter {
         this.mOnItemPicListener = mOnItemPicClickListener;
     }
 
+    //分享接口
+    public interface onItemShareListener {
+        void onShareClick(int i);
+    }
+
+    private onItemShareListener  mOnItemSharePicListener;
+
+    public void setOnItemShareClickListener(onItemShareListener mOnItemSharePicListener) {
+        this.mOnItemSharePicListener = mOnItemSharePicListener;
+    }
 
     //使用viewHolder缓存数据
     static class ViewHolder {

@@ -1,5 +1,6 @@
 package com.example.picshare;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -12,11 +13,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import fragments.HomeFragment;
 import fragments.UserFragment;
+import io.reactivex.functions.Consumer;
 import table.User;
 
 public class GuideActivity extends AppCompatActivity {
@@ -35,6 +40,7 @@ public class GuideActivity extends AppCompatActivity {
 
         Bmob.initialize(this, "b1e48c3f44fbbee30ed2b36ddeb15dbe");
         initFragment();
+        initPermission();
 
     }
 
@@ -96,6 +102,28 @@ public class GuideActivity extends AppCompatActivity {
 
         }
         transaction.show(fragments[index]).commitAllowingStateLoss();
+    }
+
+    private void initPermission()
+    {
+        RxPermissions rxPermissions=new RxPermissions(this);
+
+        rxPermissions.request(
+                Manifest.permission.CAMERA
+                ,Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ,Manifest.permission.READ_EXTERNAL_STORAGE
+        ).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean){
+                    //申请的权限全部允许
+                    Toast.makeText(GuideActivity.this, "允许了权限!", Toast.LENGTH_SHORT).show();
+                }else{
+                    //只要有一个权限被拒绝，就会执行
+                    Toast.makeText(GuideActivity.this, "未授权权限，部分功能不能使用", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }

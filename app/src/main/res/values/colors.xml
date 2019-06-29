@@ -25,5 +25,5 @@
     <color name="reds">#ffcdd2</color>
     <color name="greyd">#bdbdbd</color>
     <color name="grey">#e0e0e0</color>
-
+    <color name="bg">#eeeeeeee</color>
 </resources>

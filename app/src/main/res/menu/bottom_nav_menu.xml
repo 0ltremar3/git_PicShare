@@ -6,10 +6,9 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-
     <item
         android:id="@+id/navigation_emit"
-        android:icon="@drawable/ic_image_black_24dp"
+        android:icon="@drawable/ic_add_circle_black_32dp"
         android:title="@string/title_emit"
         />
 

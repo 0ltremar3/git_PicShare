@@ -1,6 +1,7 @@
 package com.example.picshare;
 
 import android.Manifest;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -65,30 +67,8 @@ public class EmitActivity extends AppCompatActivity
         mView = findViewById(R.id.iv_pic);
         mprogress = findViewById(R.id.progress);
 
-        initPermission();
+//        initPermission();
 
-    }
-
-    private void initPermission()
-    {
-        RxPermissions rxPermissions=new RxPermissions(this);
-
-        rxPermissions.request(
-                Manifest.permission.CAMERA
-                ,Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ,Manifest.permission.READ_EXTERNAL_STORAGE
-        ).subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean aBoolean) throws Exception {
-                if (aBoolean){
-                    //申请的权限全部允许
-                    Toast.makeText(EmitActivity.this, "允许了权限!", Toast.LENGTH_SHORT).show();
-                }else{
-                    //只要有一个权限被拒绝，就会执行
-                    Toast.makeText(EmitActivity.this, "未授权权限，部分功能不能使用", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     @Override
@@ -99,10 +79,15 @@ public class EmitActivity extends AppCompatActivity
                 selectPic();
                 break;
             case R.id.bt_upload:
-                uploadPic(mpicPath);
+                if (mpicPath != null){
+                    uploadPic(mpicPath);
 //                uploadPic("sdcard/tmp.jpg");
-                mprogress.getProgress();
+                    mprogress.getProgress();
 //                Toast.makeText(this, mpicPath, Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "请先选择图片！", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
     }
@@ -196,9 +181,14 @@ public class EmitActivity extends AppCompatActivity
                 if(e==null){//上传成功
 //                    bmobFile.getFileUrl()--返回的上传文件的完整地址
                     Toast.makeText(EmitActivity.this,
-                            "上传文件成功:" + bmobFile.getFileUrl(),
+                            "成功上传文件到:" + bmobFile.getFileUrl(),
                             Toast.LENGTH_SHORT).show();
+//                    SimpleDateFormat simpleDateFormat =
+//                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// HH:mm:ss
+//获取当前时间,格式如2015-05-01 23:59:59
+//                    Date date = new Date(System.currentTimeMillis());
                     PicInfo picInfo = new PicInfo();
+//                    picInfo.setDate(simpleDateFormat.format(date));
                     picInfo.setPic(bmobFile);
                     picInfo.setPath(mpicPath);
                     picInfo.setPicUrl(bmobFile.getFileUrl());

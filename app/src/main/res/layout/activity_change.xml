@@ -9,19 +9,19 @@
     <RelativeLayout
         android:id="@+id/buju1"
         android:layout_width="match_parent"
-        android:layout_height="212dp"
+        android:layout_height="wrap_content"
         >
-
-        <!--<com.scwang.wave.MultiWaveHeader-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="180dp"-->
-        <!--android:id="@+id/header">-->
-        <!--</com.scwang.wave.MultiWaveHeader>-->
+        <com.scwang.wave.MultiWaveHeader
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="212dp"
+            app:mwhStartColor="@color/colorPrimary"
+            app:mwhCloseColor="@color/mintcream">
+        </com.scwang.wave.MultiWaveHeader>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="212dp"
-            android:background="@color/green"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp"
@@ -34,7 +34,6 @@
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_filter_drama_black_24dp"
                 />
-
             <TextView
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
@@ -42,9 +41,8 @@
                 android:layout_height="wrap_content"
                 android:text="修改你的密码"
                 android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/white"
                 />
-
         </LinearLayout>
     </RelativeLayout>
 
@@ -129,12 +127,12 @@
     <RelativeLayout
         android:id="@+id/buju4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_alignParentStart="true"
         android:layout_below="@id/buju3"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="150dp"
-        android:layout_weight="1">
+        >
 
         <Button
             android:id="@+id/bt_sure"

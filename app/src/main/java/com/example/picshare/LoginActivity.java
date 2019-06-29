@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +97,13 @@ public class LoginActivity extends AppCompatActivity {
 //                    fetchUserInfo(getCurrentFocus());
                     Toast.makeText(LoginActivity.this,
                             bmobUser.getUsername() + "登录成功", Toast.LENGTH_SHORT).show();
+//                    getUserCache();
+                    if (cb_rememberPwd.isChecked()){
+                        User user = BmobUser.getCurrentUser(User.class);
+                        String username = (String) BmobUser.getObjectByKey("username");
+                        String userpwd = (String) BmobUser.getObjectByKey("password");
 
+                    }
                     Intent intent = new Intent();
                     intent.setClass(LoginActivity.this, GuideActivity.class);
                     startActivity(intent);
@@ -112,37 +117,37 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void getUser(){
-        if (BmobUser.isLogin()) {
-            User user = BmobUser.getCurrentUser(User.class);
-            String username = (String) BmobUser.getObjectByKey("username");
-            Toast.makeText(LoginActivity.this,
-                    username + "登录成功", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(LoginActivity.this,
-                    "尚未登录，请先登录", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void fetchUserInfo(final View view) {
-        BmobUser.fetchUserInfo(new FetchUserInfoListener<BmobUser>() {
-            @Override
-            public void done(BmobUser user, BmobException e) {
-                if (e == null) {
-                    final User myUser = BmobUser.getCurrentUser(User.class);
-                    Toast.makeText(LoginActivity.this,
-                            "更新用户本地缓存信息成功：" + myUser.getUsername(),
-                            Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Log.e("error",e.getMessage());
-                    Toast.makeText(LoginActivity.this,
-                            "更新用户本地缓存信息失败",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
+//    public void getUserCache(){
+//        if (BmobUser.isLogin()) {
+//            User user = BmobUser.getCurrentUser(User.class);
+//            String username = (String) BmobUser.getObjectByKey("username");
+//            String userpwd = (String) BmobUser.getObjectByKey("password");
+//            Toast.makeText(LoginActivity.this,
+//                    username + "登录成功", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(LoginActivity.this,
+//                    "尚未登录，请先登录", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+//
+//    private void fetchUserInfo(final View view) {
+//        BmobUser.fetchUserInfo(new FetchUserInfoListener<BmobUser>() {
+//            @Override
+//            public void done(BmobUser user, BmobException e) {
+//                if (e == null) {
+//                    final User myUser = BmobUser.getCurrentUser(User.class);
+//                    Toast.makeText(LoginActivity.this,
+//                            "更新用户本地缓存信息成功：" + myUser.getUsername(),
+//                            Toast.LENGTH_SHORT).show();
+//
+//                } else {
+//                    Log.e("error",e.getMessage());
+//                    Toast.makeText(LoginActivity.this,
+//                            "更新用户本地缓存信息失败",
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
 
 }

@@ -21,6 +21,7 @@ import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
@@ -28,8 +29,10 @@ import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 import io.reactivex.annotations.Nullable;
 import table.PicInfo;
+import table.User;
 
 public class UserFragment extends Fragment {
+    private TextView tv_id;
     private ImageView iv_avater;
     private Button bt_history;
     private Button bt_change;
@@ -49,6 +52,16 @@ public class UserFragment extends Fragment {
 
         iv_avater = getActivity().findViewById(R.id.iv_head);
         bt_change = getActivity().findViewById(R.id.bt_change);
+        tv_id = getActivity().findViewById(R.id.tv_nickName);
+
+        BmobUser bmobUser = BmobUser.getCurrentUser(User.class);
+        String username = (String) BmobUser.getObjectByKey("username");
+        String userpwd = (String) BmobUser.getObjectByKey("password");
+
+        Toast.makeText(getActivity(),
+                username,Toast.LENGTH_SHORT).show();
+
+        tv_id.setText(username);
 
         bt_change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +72,5 @@ public class UserFragment extends Fragment {
         });
 
     }
-
 
 }

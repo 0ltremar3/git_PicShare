@@ -13,6 +13,7 @@
 
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -46,8 +47,7 @@
             android:label="UserRegister" />
         <activity android:name=".ShowImageActivity"
             android:label="checkPic"/>
-        <activity android:name=".ChangePwdActivty"
-            android:label="changePassword"/>
+        <activity android:name=".ChangePwdActivty"/>
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.picshare.BmobContentProvider">

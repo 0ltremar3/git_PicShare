@@ -1,9 +1,11 @@
 package com.example.picshare;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +15,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.File;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -22,6 +26,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
+import io.reactivex.functions.Consumer;
 import table.PicInfo;
 
 public class ShowImageActivity extends AppCompatActivity {
@@ -41,7 +46,7 @@ public class ShowImageActivity extends AppCompatActivity {
         imgId = intent.getStringExtra("picFile");
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this,imgPath,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,imgPath,Toast.LENGTH_SHORT).show();
         Glide.with(ShowImageActivity.this)
                 .load(imgPath).placeholder(R.drawable.bitmap)//加载未完成时显示占位图
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -58,8 +63,8 @@ public class ShowImageActivity extends AppCompatActivity {
                                 //点击了保存
                                 progressBar.setVisibility(View.VISIBLE);
                                 downLoadPic();
-                                Toast.makeText(ShowImageActivity.this,
-                                        imgId,Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(ShowImageActivity.this,
+//                                        imgId,Toast.LENGTH_SHORT).show();
                                 break;
 
                             }
@@ -79,6 +84,8 @@ public class ShowImageActivity extends AppCompatActivity {
 
     public void downLoadPic(){
         BmobQuery<PicInfo> bmobQuery = new BmobQuery<PicInfo>();
+//        final File externalStoragePublicDirectory =
+//                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         bmobQuery.addWhereEqualTo("objectId", imgId); //键值对
         bmobQuery.findObjects(new FindListener<PicInfo>() {
             @Override
@@ -98,8 +105,6 @@ public class ShowImageActivity extends AppCompatActivity {
                                         alterDialog.setMessage("下载成功");
                                         alterDialog.show();
                                         alterDialog.setCancelable(true);
-//                                        Toast.makeText(ShowImageActivity.this,
-//                                                "下载成功",Toast.LENGTH_SHORT).show();
                                     }else {
                                         Toast.makeText(ShowImageActivity.this,
                                                 "下载失败",Toast.LENGTH_SHORT).show();
