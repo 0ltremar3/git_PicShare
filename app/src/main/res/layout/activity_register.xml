@@ -23,7 +23,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="212dp"
-            android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -32,7 +31,8 @@
                 android:id="@+id/profile_image"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal"
                 android:src="@drawable/ic_filter_drama_black_24dp"
                 />
 
