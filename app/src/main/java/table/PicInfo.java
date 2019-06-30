@@ -9,11 +9,10 @@ import cn.bmob.v3.datatype.BmobFile;
 
 public class PicInfo extends BmobObject {
     private BmobFile pic;
-    private String id;
     private String owner;
     private String path;
     private String picUrl;
-    private Integer like;
+    private String[] like;
 
 
     public String getOwner() {
@@ -24,28 +23,12 @@ public class PicInfo extends BmobObject {
         this.owner = owner;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getPath() {
         return path;
     }
 
     public void setPath(String path) {
         this.path = path;
-    }
-
-    public Integer getLike() {
-        return like;
-    }
-
-    public void setLike(Integer like) {
-        this.like = like;
     }
 
     public String getPicUrl() {
@@ -64,4 +47,11 @@ public class PicInfo extends BmobObject {
         this.pic = pic;
     }
 
+    public String[] getLike() {
+        return like;
+    }
+
+    public void setLike(String[] like) {
+        this.like = like;
+    }
 }

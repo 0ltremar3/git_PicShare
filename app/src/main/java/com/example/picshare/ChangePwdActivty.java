@@ -1,6 +1,6 @@
 package com.example.picshare;
 
-import android.support.design.widget.TextInputLayout;
+//import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +19,7 @@ public class ChangePwdActivty extends AppCompatActivity implements View.OnClickL
     EditText now_pass;
     EditText new_pass;
 
-    TextInputLayout textInputLayout;
+//    TextInputLayout textInputLayout;
 
     Button next_button;
 
@@ -28,9 +28,9 @@ public class ChangePwdActivty extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        textInputLayout = findViewById(R.id.now_pass_layout);
-        now_pass = findViewById(R.id.now_pass);
-        new_pass = findViewById(R.id.new_pass);
+//        textInputLayout = findViewById(R.id.now_pass_layout);
+        now_pass = findViewById(R.id.EditView1);
+        new_pass = findViewById(R.id.EditView2);
         next_button = findViewById(R.id.next_button);
 
         next_button.setOnClickListener(this);
@@ -50,8 +50,8 @@ public class ChangePwdActivty extends AppCompatActivity implements View.OnClickL
                 if (e == null) {
                     Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_SHORT).show();
                     finish();
-                }else {
-                    textInputLayout.setError("旧密码错误");
+                }else {Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"旧密码错误",Toast.LENGTH_SHORT).show();
                 }
             }
         });

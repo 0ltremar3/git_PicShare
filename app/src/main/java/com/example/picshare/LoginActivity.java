@@ -121,11 +121,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    public void restoreInfo(String username,String userpwd){
-        et_username.setText(username);
-        et_password.setText(userpwd);
-        cb_rememberPwd.setChecked(false);
-    }
+//    public void restoreInfo(String username,String userpwd){
+//        et_username.setText(username);
+//        et_password.setText(userpwd);
+//        cb_rememberPwd.setChecked(false);
+//    }
 
 //    public void getUserCache(){
 //        if (BmobUser.isLogin()) {

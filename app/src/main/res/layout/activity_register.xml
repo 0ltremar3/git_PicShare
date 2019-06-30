@@ -16,8 +16,8 @@
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="212dp"
-            app:mwhStartColor="@color/colorPrimary"
-            app:mwhCloseColor="@color/mintcream">
+            app:mwhStartColor="@color/greend"
+            app:mwhCloseColor="@color/pink">
         </com.scwang.wave.MultiWaveHeader>
 
         <LinearLayout
@@ -36,15 +36,6 @@
                 android:src="@drawable/ic_filter_drama_black_24dp"
                 />
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="注册你的账户"
-                android:gravity="center"
-                android:textColor="@android:color/white"
-                />
         </LinearLayout>
 
     </RelativeLayout>
