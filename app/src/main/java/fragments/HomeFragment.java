@@ -39,28 +39,26 @@ import java.util.Map;
 import adapter.PicAdapter;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 import io.reactivex.annotations.Nullable;
 import table.PicInfo;
+import table.User;
 
 public class HomeFragment extends Fragment {
 
     private PullRefreshLayout pullRefreshLayout;
     private ListView lvPics;
-    private HashMap mHashmap;
-    private List<Map<String, ?>> mapList = new ArrayList<Map<String, ?>>();
-    private SimpleAdapter simpleAdapter;
-//    private boolean reflash = false;
-//    private String uri[];
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        view = inflater.inflate(R.layout.fragment_home,container,false);
         return view;
     }
 
@@ -69,6 +67,7 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         lvPics = getActivity().findViewById(R.id.lv_pics);
+
         lvPics.setScrollbarFadingEnabled(true);
 
         getContent();
@@ -84,16 +83,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        User user = BmobUser.getCurrentUser(User.class);
-
     }
 
     public void getContent(){
-//        Toast.makeText(getActivity(),"homePage",Toast.LENGTH_SHORT).show();
-        //只返回PicInfo表的pic这列的值
+
         BmobQuery<PicInfo> bmobQuery = new BmobQuery<PicInfo>();
         bmobQuery.order("-createdAt");
-//        bmobQuery.addQueryKeys("owner");
         bmobQuery.findObjects(new FindListener<PicInfo>() {
                     @Override
                     public void done(final List<PicInfo> list, BmobException e) {
@@ -171,4 +166,17 @@ public class HomeFragment extends Fragment {
         });
 
     }
+
+
+//    private View getViewByPosition(int pos, ListView listView) {
+//        final int firstListItemPosition = listView.getFirstVisiblePosition();
+//        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+//
+//        if (pos < firstListItemPosition || pos > lastListItemPosition) {
+//            return listView.getAdapter().getView(pos, null, listView);
+//        } else {
+//            final int childIndex = pos - firstListItemPosition;
+//            return listView.getChildAt(childIndex);
+//        }
+//    }
 }

@@ -1,5 +1,7 @@
 package table;
 
+import android.content.Intent;
+
 import java.net.URL;
 import java.security.acl.Owner;
 import java.util.Date;
@@ -12,7 +14,7 @@ public class PicInfo extends BmobObject {
     private String owner;
     private String path;
     private String picUrl;
-    private String[] like;
+    private Integer like;
 
 
     public String getOwner() {
@@ -47,11 +49,11 @@ public class PicInfo extends BmobObject {
         this.pic = pic;
     }
 
-    public String[] getLike() {
+    public Integer getLike() {
         return like;
     }
 
-    public void setLike(String[] like) {
+    public void setLike(Integer like) {
         this.like = like;
     }
 }

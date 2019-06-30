@@ -193,6 +193,7 @@ public class EmitActivity extends AppCompatActivity
                     PicInfo picInfo = new PicInfo();
 //                    picInfo.setDate(simpleDateFormat.format(date));
                     picInfo.setPic(bmobFile);
+                    picInfo.setLike(0);
                     picInfo.setPath(mpicPath);
                     picInfo.setPicUrl(bmobFile.getFileUrl());
                     picInfo.setOwner(BmobUser.getCurrentUser(User.class).getUsername());

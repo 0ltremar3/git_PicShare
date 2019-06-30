@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.picshare.ChangePwdActivty;
+import com.example.picshare.HistoryActivity;
 import com.example.picshare.LoginActivity;
 import com.example.picshare.R;
 
@@ -53,6 +54,7 @@ public class UserFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         iv_avater = getActivity().findViewById(R.id.iv_head);
+        bt_history = getActivity().findViewById(R.id.bt_history);
         bt_change = getActivity().findViewById(R.id.bt_change);
         tv_id = getActivity().findViewById(R.id.tv_nickName);
         bt_exit = getActivity().findViewById(R.id.bt_exit);
@@ -64,6 +66,14 @@ public class UserFragment extends Fragment {
 //                username,Toast.LENGTH_SHORT).show();
 
         tv_id.setText(username);
+
+        bt_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
 
         bt_change.setOnClickListener(new View.OnClickListener() {
             @Override

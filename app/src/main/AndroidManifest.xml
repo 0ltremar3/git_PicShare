@@ -48,6 +48,8 @@
         <activity android:name=".ShowImageActivity"
             android:label="checkPic"/>
         <activity android:name=".ChangePwdActivty"/>
+        <activity android:name=".HistoryActivity"
+            android:label="History"/>
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.picshare.BmobContentProvider">
