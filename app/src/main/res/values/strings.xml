@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PicShare</string>
+    <string name="title_activity_guide">GuideActivity</string>
+    <string name="title_home">主页</string>
+    <string name="title_emit">上传</string>
+    <string name="title_user">我的</string>
 </resources>

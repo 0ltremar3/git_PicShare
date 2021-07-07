@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <com.scwang.wave.MultiWaveHeader
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="212dp"
+            app:mwhStartColor="@color/greend"
+            app:mwhCloseColor="@color/pink">
+        </com.scwang.wave.MultiWaveHeader>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="212dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_filter_drama_black_24dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/relative1"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:id="@+id/iv_ruser"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_person_outline_black_24dp" />
+
+        <EditText
+            android:id="@+id/et_rusername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="4dp"
+            android:hint="邮箱/用户名"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/relative2"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/iv_rpwd"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/ic_lock_outline_black_24dp" />
+
+        <EditText
+            android:id="@+id/et_rpwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="4dp"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <ImageView
+            android:id="@+id/iv_pwd_switch"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/ic_visibility_off_black_24dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative4"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/relative3"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/iv_confirm"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/ic_lock_outline_black_24dp" />
+
+        <EditText
+            android:id="@+id/et_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="4dp"
+            android:hint="确认密码"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <ImageView
+            android:id="@+id/iv_confirm_switch"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/ic_visibility_off_black_24dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative5"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/relative4"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="100dp"
+        >
+
+        <Button
+            android:id="@+id/bt_signup"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/circle_shape"
+            android:text="注册"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+</LinearLayout>

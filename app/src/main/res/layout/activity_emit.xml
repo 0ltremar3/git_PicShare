@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:id="@+id/LL_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/iv_choosePic"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_shape"
+        android:text="选择图片"
+        android:textColor="@android:color/white"
+        android:textSize="18dp" />
+
+    <View
+        android:layout_width="48dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/bt_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_shape"
+        android:text="确认上传"
+        android:textColor="@android:color/white"
+        android:textSize="18dp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LL_choose"
+        android:layout_marginTop="16dp"/>
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/progress"
+        />
+</RelativeLayout>
